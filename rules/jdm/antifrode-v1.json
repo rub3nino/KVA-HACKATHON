@@ -1,0 +1,25 @@
+{
+  "nodes": [
+    { "id": "in", "type": "inputNode", "name": "Sinistro", "position": { "x": 100, "y": 100 } },
+    {
+      "id": "dt", "type": "decisionTableNode", "name": "Controllo antifrode", "position": { "x": 400, "y": 100 },
+      "content": {
+        "hitPolicy": "first",
+        "inputs": [
+          { "id": "i1", "name": "Denunce ultimi 24 mesi", "field": "denunce_precedenti" },
+          { "id": "i2", "name": "Testimoni", "field": "testimoni" }
+        ],
+        "outputs": [ { "id": "o1", "name": "Esito", "field": "esito" } ],
+        "rules": [
+          { "_id": "r1", "i1": ">= 3", "i2": "false", "o1": "\"rifiutato\"", "_description": "3+ denunce in 24 mesi e nessun testimone: pratica bloccata" },
+          { "_id": "r2", "i1": "", "i2": "", "o1": "\"approvato\"", "_description": "Nessun indicatore di frode" }
+        ]
+      }
+    },
+    { "id": "out", "type": "outputNode", "name": "Esito", "position": { "x": 700, "y": 100 } }
+  ],
+  "edges": [
+    { "id": "e1", "sourceId": "in", "targetId": "dt", "type": "edge" },
+    { "id": "e2", "sourceId": "dt", "targetId": "out", "type": "edge" }
+  ]
+}

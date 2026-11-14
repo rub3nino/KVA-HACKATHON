@@ -1,0 +1,22 @@
+{
+  "nodes": [
+    { "id": "in", "type": "inputNode", "name": "Sinistro", "position": { "x": 100, "y": 100 } },
+    {
+      "id": "dt", "type": "decisionTableNode", "name": "Liquidazione automatica v1", "position": { "x": 400, "y": 100 },
+      "content": {
+        "hitPolicy": "first",
+        "inputs": [ { "id": "i1", "name": "Importo", "field": "importo" } ],
+        "outputs": [ { "id": "o1", "name": "Esito", "field": "esito" } ],
+        "rules": [
+          { "_id": "r1", "i1": "<= 5000", "o1": "\"approvato\"", "_description": "Importo fino a 5.000 €: liquidazione automatica" },
+          { "_id": "r2", "i1": "", "o1": "\"da_rivedere\"", "_description": "Importo oltre 5.000 €: serve un liquidatore" }
+        ]
+      }
+    },
+    { "id": "out", "type": "outputNode", "name": "Esito", "position": { "x": 700, "y": 100 } }
+  ],
+  "edges": [
+    { "id": "e1", "sourceId": "in", "targetId": "dt", "type": "edge" },
+    { "id": "e2", "sourceId": "dt", "targetId": "out", "type": "edge" }
+  ]
+}

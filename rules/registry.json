@@ -1,0 +1,26 @@
+{
+  "_nota": "Dati sintetici. Ogni regola ha provenienza (fonte) e validita' temporale. 'ambito' raggruppa le versioni: per ogni ambito vale una sola versione alla data del caso.",
+  "regole": [
+    {
+      "id": "R-03", "versione": 1, "ambito": "liquidazione",
+      "titolo": "Liquidazione automatica fino a 5.000 €",
+      "file": "jdm/liquidazione-v1.json",
+      "valida_da": "2026-01-01", "superata_da": "2026-11-12", "supera": null,
+      "fonte": { "documento": "Manuale liquidazione sinistri 2026", "sezione": "§4.1", "approvata_da": "Resp. Sinistri" }
+    },
+    {
+      "id": "R-07", "versione": 2, "ambito": "liquidazione",
+      "titolo": "Liquidazione automatica fino a 3.000 €, esclusi contratti recenti",
+      "file": "jdm/liquidazione-v2.json",
+      "valida_da": "2026-11-12", "superata_da": null, "supera": "R-03",
+      "fonte": { "documento": "Circolare interna 11/2026", "sezione": "§2", "approvata_da": "Resp. Sinistri" }
+    },
+    {
+      "id": "C-01", "versione": 1, "ambito": "antifrode",
+      "titolo": "Blocco per denunce ripetute senza testimoni",
+      "file": "jdm/antifrode-v1.json",
+      "valida_da": "2026-06-01", "superata_da": null, "supera": null,
+      "fonte": { "documento": "Policy antifrode", "sezione": "§3.2", "approvata_da": "Compliance" }
+    }
+  ]
+}
